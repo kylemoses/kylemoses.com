@@ -8,10 +8,10 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Kyle Moses | Front-End Web Developer & Designer</title>
+        <title>Kyle Moses | Front-End Web Developer</title>
 
         <meta name="author" content="Kyle Moses">
-        <meta name="description" content="Kyle Moses is a front end web developer and digital web designer based in Columbus Ohio, 43125">
+        <meta name="description" content="Kyle Moses is a front end web developer and web designer based in Columbus Ohio, 43125">
         <meta name="keywords" content="HTML5, CSS3, Front-End, Web, Developer, Columbus, JavaScript, JS, jQuery, AngularJs, PHP">
         <meta name="robots" content="index, follow">
 
@@ -29,32 +29,54 @@
             <div class="container">
                 <a href="/" class="logo">
                     <img class="logo-img" src="img/svg/kylemoses_logo.svg" alt="Kyle Moses Logo" title="Kyle Moses Logo" />
-                    <h1 class="logo-text">Kyle Moses // Front End Web Developer</h1>
+                    <h1 class="logo-text">// Kyle Moses <br />// Front End Web Developer</h1>
                 </a>
+				<nav>
+		            <a class="portfolio portfolio_wrap">
+						<img src="img/svg/portfolio.svg" alt="portfolio icon" />
+		                <p>Portfolio</p>
+		            </a>
+		            <a href="docs/kylemoses_resume.pdf" class="resume_wrap" target="_blank">
+						<img src="img/svg/resume.svg" alt="portfolio icon" />
+						<p>Resume</p>
+		            </a>
+		            <a href="" class="contact contact_wrap" data-reveal-id="contact_modal">
+						<img src="img/svg/email.svg" alt="portfolio icon" />
+						<p>Contact</p>
+		            </a>
+		        </nav>
             </div>
         </header>
         <div class="elevator_speach">
             <div class="container">
+				<img src="img/kyle-portrait.jpg" alt="A portriat of Kyle Moses." />
                 <p>"I can't remember a time without my own computer. You could say I was a bit of a nerd growing up. I spent my childhood taking things apart just to put them back together again. Building has always been a part of my inquisitive nature,
                     and now I enjoy it for a living as a web designer and front-end developer. The intricacy of writing code has always fascinated me. My natural love for trouble-shooting and well trained eye for design allow me to offer a more versatile
                     skill set. This combination aligned with my passion for what I do puts me a cut above the rest."
                 </p>
             </div>
         </div>
-        <div class="container">
-            <div class="portfolio_wrap">
-                <a class="portfolio" href=""></a>
-            </div>
-            <div class="resume_wrap">
-                <a class="resume" href="kylemoses_resume.pdf" target="_blank"></a>
-            </div>
-            <div class="contact_wrap">
-                <a class="contact" data-reveal-id="contact_modal" href="#"></a>
-            </div>
-        </div>
+		<!-- <article class="github">
+			<h1><a href="https://github.com/kylemoses">Check me out on GitHub</a></h1>
+		</article> -->
+		<div class="portfolio">
+			<div class="container">
+				<h2>Portfolio</h2>
+				<article class="project">
+					<div class="project-img">
+						<img src="img/portfolio/drDeign_website.jpg" alt="" />
+					</div>
+					<aside class="project-details">
+						<p><strong>Project:</strong> www.mj-wilson.com</p>
+						<p><strong>Role:</strong> Designer, Developer</p>
+						<p><strong>Description:</strong></p>
+					</aside>
+				</article>
+			</div>
+		</div>
         <footer>
 			<div class="container">
-				<p>&copy; Copyright 2012 Kyle Moses. All Rights Reserved.</p>
+				<p>&copy; Copyright 2012-<span id="curYear"></span> Kyle Moses. All Rights Reserved.</p>
 			</div>
         </footer>
 
