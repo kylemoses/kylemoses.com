@@ -1,0 +1,39 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+	<!--<![endif]-->
+
+	<head>
+		<% include ../partials/head %>
+	</head>
+
+	<body>
+		<header class="container">
+			<% include ../partials/header %>
+		</header>
+		<p class="container elevator_speach"><%= data.elevator_speach %></p>
+		<div class="container links">
+			<a href="https://github.com/kylemoses" target="_blank" title="check me out on GitHub">
+				<img src="img/svg/github.svg" alt="GitHub Octo-cat icon" /><span>GitHub</span>
+			</a>
+			<a href="https://www.linkedin.com/in/kylemoses/" target="_blank" title="visit my LinkedIn profile">
+				<img src="img/png/in.png" alt="LinkedIn logo" /><span>LinkedIn</span>
+			</a>
+			<a href="docs/kylemoses_resume.pdf" target="_blank" title="download my resume!"> 
+				<img src="img/svg/resume.svg" alt="resume icon" /><span>Resume</span>
+			</a>
+			<a href="mailto:moses.kyle@gmail.com" target="_blank" >
+				<img src="img/svg/email.svg" alt="portfolio icon" /><span>Contact</span>
+			</a>
+		</div>
+		<footer>
+			<% include ../partials/footer %>
+		</footer>
+		<script src="js/libs/jquery-1.7.1.min.js"></script>
+		<script src="js/main.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,5 @@
+PassengerEnabled on
+PassengerAppRoot /home/thesupaf/serverCode/kylemoses
+SetEnv NODE_ENV production
+SetEnv NODE_PATH /usr/lib/node_modules
+
