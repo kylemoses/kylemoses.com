@@ -47,7 +47,7 @@ app.post('/contact', function(req, res) {
 	// setup the smtp server
 	var emailServer = email.server.connect({
 		user: "moses.kyle@gmail.com",
-		password: "khujatcgvhoxpfal",
+		password: "",
 		host: "smtp.gmail.com",
 		ssl: true
 	});
