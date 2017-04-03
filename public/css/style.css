@@ -316,17 +316,20 @@ body {
     font-style: normal;
     color: #6a6a6a;
     font-size: 10px;
-    line-height: 10px;
+    line-height: 1;
     font-weight: normal;
 }
 
 .container {
     width: 100%;
     max-width: 1024px;
-    margin: 30px auto;
-    padding: 30px;
+    margin: 0px auto;
+    padding: 30px 60px;
     position: relative;
     overflow: hidden;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 header {
@@ -487,6 +490,64 @@ h2 {
     font-size: 36px;
     color: #6a6a6a;
     font-weight: bold;
+    margin: 0;
+}
+
+
+/* contact form */
+
+#contact {
+    width: 50%;
+    float: left;
+}
+
+#contact label {
+    width: 100%;
+    display: block;
+    clear: both;
+    margin: 20px 0px;
+    font-size: 12px;
+}
+
+#contact input[type=text],
+#contact input[type=email],
+#contact textarea {
+    width: 100%;
+    margin: 5px 0 0 0;
+    padding: 10px;
+    font-size: 12px;
+    border: 1px solid #696969;
+}
+
+#contact input[type=submit] {
+    width: 33.333%;
+    font-size: 13px;
+    color: #333;
+    border: 1px solid #333;
+    padding: 15px;
+}
+
+#contact #contactMsg {
+    display: none;
+    width: 100%;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+    color: #358c35;
+    border: 1px solid #358c35;
+    background: #ceffce;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#contact #contactMsg li {
+    text-align: left;
+}
+
+#contact .error {
+    color: #ab2323 !important;
+    border-color: #ab2423 !important;
+    background-color: #f9c9c9 !important;
 }
 
 
@@ -503,46 +564,55 @@ h2 {
         margin: 0px auto;
         padding: 0px;
     }
-    .main {
+    .container {
+        padding: 20px;
+    }
+    .logo {
         width: 100%;
-        padding: 0px;
-        margin: 0px;
+        display: block;
+        position: relative;
+        overflow: hidden;
     }
-    .black {
+    .logo-img {
+        margin: 0;
+        display: block;
+        position: relative;
+        float: none;
+        width: 100px;
+    }
+    .logo-text {
+        display: block;
+        clear: both;
         width: 100%;
+        POSITION: relative;
+        top: 0;
+        transform: none;
+        left: 0;
+        padding: 0;
+        margin: 10px 0px;
     }
-    .elevator_speach {
-        width: 90%;
+    .links a {
+        width: 0 !important;
+        height: 0 !important;
+        padding: 7% !important;
+        margin: 10% 5% !important;
     }
-    .wrap {
+    #contact {
         width: 100%;
-    }
-    .portfolio_wrap {
-        margin: 10px auto;
-        float: none;
-    }
-    .resume_wrap {
-        margin: 10px auto;
-        float: none;
-    }
-    .contact_wrap {
-        margin: 10px auto;
-        float: none;
-    }
-    .message {
-        height: 50px;
-    }
-    .reveal-modal {
-        width: 80%;
-        margin-left: 0;
-        padding: 5%;
-        top: 25%;
-        left: 5%;
     }
     footer {
         width: 90%;
         margin: 0px auto;
         padding: 0px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .links a {
+        width: 0 !important;
+        height: 0 !important;
+        padding: 19.5% !important;
+        margin: 10% 5% !important;
     }
 }
 

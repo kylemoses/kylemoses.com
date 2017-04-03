@@ -1,4 +1,18 @@
 <!-- views/partials/footer.ejs -->
-<div class="container">
-	<p>&copy; Copyright 2012-<span id="curYear"></span> Kyle Moses. All Rights Reserved.</p>
-</div>
+		<footer class="container">
+			<p>&copy; Copyright 2012-<span id="curYear"></span> Kyle Moses. All Rights Reserved.</p>
+		</footer>
+		<script src="js/libs/jquery-1.7.1.min.js"></script>
+		<script src="js/main.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var footerDate = new kyle.ui.displayYear('curYear');
+				footerDate.init();
+				if(window.location.pathname === "/contact"){
+					var contactForm = new kyle.ui.contactForm('contact', 'contactMsg');
+					contactForm.init();
+				}
+			});
+			</script>
+	</body>
+</html>
