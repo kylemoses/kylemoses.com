@@ -3,7 +3,8 @@
 var http = require('http');
 var express = require('express');
 var bodyParser = require('body-parser')
-var email = require("emailjs");
+var email = require('emailjs');
+var fs = require('fs')
 
 var app = express();
 // set our port
@@ -29,6 +30,11 @@ http.get("http://www.kylemoses.com/api/kyle", function(res) {
 }).on('error', function(e) {
 	console.log("Got error: " + e.message);
 });
+var appPass = "";
+fs.readFile(__dirname + "/" + "app-specific-password.txt", 'utf8', function(err, data) {
+	appPass = data
+	console.log('appPass: ', appPass);
+});
 
 // index page 
 app.get('/', function(req, res) {
@@ -47,7 +53,7 @@ app.post('/contact', function(req, res) {
 	// setup the smtp server
 	var emailServer = email.server.connect({
 		user: "moses.kyle@gmail.com",
-		password: "",
+		password: appPass,
 		host: "smtp.gmail.com",
 		ssl: true
 	});
