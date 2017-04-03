@@ -44,12 +44,14 @@ kyle.ui.contactForm = function(formElm, resElm) {
 					contentType: "application/json",
 					success: function(data) {
 						self.events.displayResponse(data);
+						self.events.resetForm();
+						setTimeout(function() {
+							self.events.hideResponse();
+						}, 5000);
 					},
 					error: function(data) {
 						self.events.displayResponse(data.responseText, "error");
 					}
-				}).done(function() {
-					self.events.resetForm();
 				});
 			} else {
 				self.events.displayResponse(self.validationMsg, "error");

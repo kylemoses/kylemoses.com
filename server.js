@@ -30,6 +30,7 @@ http.get("http://www.kylemoses.com/api/kyle", function(res) {
 }).on('error', function(e) {
 	console.log("Got error: " + e.message);
 });
+// read password from file rather than storing directly in javascript
 var appPass = "";
 fs.readFile(__dirname + "/" + "app-specific-password.txt", 'utf8', function(err, data) {
 	appPass = data
