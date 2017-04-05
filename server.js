@@ -14,29 +14,51 @@ app.set('view engine', 'ejs');
 // use things
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
-// load api data
-var kyleData = "";
-http.get("http://www.kylemoses.com/api/kyle", function(res) {
-	console.log("Got response: " + res.statusCode);
-	if (res.statusCode == 200) {
-		console.log("Got value: " + res.statusMessage);
-	}
-	res.on("data", function(chunk) {
-		kyleData = JSON.parse(chunk);
-	});
-	res.on('end', function() {
-		console.log(kyleData);
-	})
-}).on('error', function(e) {
-	console.log("Got error: " + e.message);
-});
-// read password from file rather than storing directly in javascript
-var appPass = "";
-fs.readFile(__dirname + "/" + "app-specific-password.txt", 'utf8', function(err, data) {
-	appPass = data
-	console.log('appPass: ', appPass);
-});
 
+var appPass = "";
+var kyleData = "";
+
+// define custom middlewares
+function getKyleData(req, res, next) {
+	//get api data for filling out templates
+	if (req.method === 'GET') {
+		if (kyleData.typeof != "Object") {
+			http.get("http://www.kylemoses.com/api/kyle", function(res) {
+				res.on("data", function(chunk) {
+					kyleData = JSON.parse(chunk);
+				});
+				res.on('end', function() {
+					next();
+				})
+			}).on('error', function(e) {
+				console.log("Got error: " + e.message);
+				res.status(500).send("Got error: " + e.message);
+			});
+		} else {
+			next();
+		}
+	} else {
+		next();
+	}
+}
+// read password from file rather than storing directly in javascript
+function getAppPass(req, res, next) {
+	if (req.method == "POST" && req.route == "/contact") {
+		if (appPass == "") {
+			fs.readFile(__dirname + "/" + "app-specific-password.txt", 'utf8', function(err, data) {
+				appPass = data;
+				next();
+			});
+		} else {
+			next();
+		}
+	} else {
+		next();
+	}
+}
+// use custom middlewares
+app.use(getAppPass)
+app.use(getKyleData);
 // index page 
 app.get('/', function(req, res) {
 	res.render('pages/index', { data: kyleData });
@@ -65,6 +87,7 @@ app.post('/contact', function(req, res) {
 	emailMessage += 'Subject: ' + formData.subject + '\r\n';
 	emailMessage += 'Message: ' + formData.message + '\r\n';
 	// send the message and get a callback with an error or details of the message that was sent
+	//TODO Validate Form Inputs Server Side
 	emailServer.send({
 		text: emailMessage,
 		from: formData.email,
