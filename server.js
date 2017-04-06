@@ -5,10 +5,10 @@ var express = require('express');
 var bodyParser = require('body-parser')
 var email = require('emailjs');
 var fs = require('fs')
+var config = require('./config/main.js');
 
 var app = express();
 // set our port
-var port = process.env.PORT || 8080;
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 // use things
@@ -23,7 +23,7 @@ function getKyleData(req, res, next) {
 	//get api data for filling out templates
 	if (req.method === 'GET') {
 		if (kyleData.typeof != "Object") {
-			http.get("http://www.kylemoses.com/api/kyle", function(res) {
+			http.get("http://www.kylemoses.com/api/kyle?token=" + config.token, function(res) {
 				res.on("data", function(chunk) {
 					kyleData = JSON.parse(chunk);
 				});
@@ -109,6 +109,6 @@ if (typeof(PhusionPassenger) != 'undefined') {
 	console.log('Example app listening with passenger');
 	app.listen('passenger');
 } else {
-	app.listen(port);
-	console.log('Magic happens on port ' + port);
+	app.listen(config.port);
+	console.log('Magic happens on port ' + config.port);
 }
