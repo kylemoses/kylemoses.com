@@ -2,3 +2,4 @@
 node_modules
 .htaccess
 app-specific-password.txt
+api-creds.json

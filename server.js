@@ -15,15 +15,42 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
-var appPass = "";
-var kyleData = "";
+appPass = "";
+kyleData = "";
+username = "";
+password = "";
+token = "";
 
+function authenticate(req, res, next) {
+	if (token === "") {
+		fs.readFile(__dirname + "/" + "api-creds.json", 'utf8', function(err, data) {
+			var data = JSON.parse(data);
+			username = data.username;
+			password = data.password;
+			http.get("http://www.kylemoses.com/api/authenticate?username=" + username + "&password=" + password, function(res) {
+				res.on("data", function(chunk) {
+					token = JSON.parse(chunk);
+					token = token.token
+					console.log('chunk', token);
+				});
+				res.on('end', function() {
+					next();
+				})
+			}).on('error', function(e) {
+				console.log("Got error: " + e.message);
+				res.status(500).send("Got error: " + e.message);
+			});
+		});
+	} else {
+		next();
+	}
+}
 // define custom middlewares
 function getKyleData(req, res, next) {
 	//get api data for filling out templates
 	if (req.method === 'GET') {
 		if (kyleData.typeof != "Object") {
-			http.get("http://www.kylemoses.com/api/kyle?token=" + config.token, function(res) {
+			http.get("http://www.kylemoses.com/api/users/kyle?token=" + token, function(res) {
 				res.on("data", function(chunk) {
 					kyleData = JSON.parse(chunk);
 				});
@@ -57,7 +84,8 @@ function getAppPass(req, res, next) {
 	}
 }
 // use custom middlewares
-app.use(getAppPass)
+app.use(authenticate);
+app.use(getAppPass);
 app.use(getKyleData);
 // index page 
 app.get('/', function(req, res) {
