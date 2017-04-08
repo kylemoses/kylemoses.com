@@ -30,8 +30,7 @@ function authenticate(req, res, next) {
 			http.get("http://www.kylemoses.com/api/authenticate?username=" + username + "&password=" + password, function(res) {
 				res.on("data", function(chunk) {
 					token = JSON.parse(chunk);
-					token = token.token
-					console.log('chunk', token);
+					token = token.token;
 				});
 				res.on('end', function() {
 					next();
